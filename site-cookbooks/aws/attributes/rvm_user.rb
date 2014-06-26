@@ -1,1 +1,2 @@
-default[:rvm][:user] = "vagrant" 
+default[:default][:user] = "vagrant"
+default[:default][:group] = "vagrant"
