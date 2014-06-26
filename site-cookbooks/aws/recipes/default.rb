@@ -9,5 +9,7 @@
 
 
 include_recipe "#{cookbook_name}::awscli"
+include_recipe "#{cookbook_name}::git_install"
 include_recipe "#{cookbook_name}::rvm_install"
 include_recipe "#{cookbook_name}::gem_install"
+include_recipe "#{cookbook_name}::vim_install"

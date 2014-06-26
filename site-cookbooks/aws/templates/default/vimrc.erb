@@ -1,0 +1,23 @@
+set nocompatible
+filetype off
+
+
+if has('vim_starting')
+  set runtimepath+=/home/<%= node[:default][:user] %>/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('/home/<%= node[:default][:user] %>/.vim/bundle/'))
+endif
+
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+<% @install_neobundle.each do |bun| -%>
+<%= sprintf 'NeoBundle  \'%s\'',bun %>
+<% end -%>
+
+filetype plugin indent on
+filetype indent on
+syntax on

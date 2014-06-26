@@ -1,0 +1,5 @@
+source '<%= node[:gem][:source] -%>'
+
+<% @gem_packages.each do |gem| -%>
+<%= sprintf 'gem  \'%s\'',gem %>
+<% end -%>
