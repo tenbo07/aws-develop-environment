@@ -1,0 +1,7 @@
+*.sw[a-z]
+cookbooks/
+.librarian/
+tmp/
+.vagrant/
+.idea/
+*.lock
