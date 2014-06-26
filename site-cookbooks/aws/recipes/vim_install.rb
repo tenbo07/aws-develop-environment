@@ -32,6 +32,15 @@ execute 'change owner' do
   command "chown -R #{node[:default][:user]}:#{node[:default][:group]} /home/#{node[:default][:user]}/.vim"
 end
 
+execute 'make vimproc' do
+  not_if "ls /home/#{node[:default][:user]}/.vim/bundle/vimproc/autoload/vimproc_linux64.so"
+
+  user node[:default][:user]
+  group node[:default][:group]
+  command "cd /home/#{node[:default][:user]}/.vim/bundle/vimproc && make -f make_unix.mak"
+end
+
+
 template "/home/#{node[:default][:user]}/.vimrc" do
   source 'vimrc.erb'
   owner node[:default][:user]

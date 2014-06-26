@@ -7,13 +7,6 @@ if has('vim_starting')
   call neobundle#rc(expand('/home/<%= node[:default][:user] %>/.vim/bundle/'))
 endif
 
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-
 <% @install_neobundle.each do |bun| -%>
 <%= sprintf 'NeoBundle  \'%s\'',bun %>
 <% end -%>
