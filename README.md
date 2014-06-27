@@ -49,7 +49,7 @@ default[:git][:username] = "username"
 default[:git][:email] = "user@email"
 ```
 
-#### プロキシ環境下での利用 設定
+#### プロキシ環境下での利用
 環境変数"http_proxy","https_proxy"を設定
 
 for Windows
