@@ -1,0 +1,44 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://ftp.jaist.ac.jp/pub/Linux/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+      "iso_checksum": "f21a71e8e31df73297bdd1ccd4a64a36831284bd",
+      "iso_checksum_type": "sha1",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "3000s",
+      "http_directory": "./",
+      "boot_wait": "30s",
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
+        "<enter><wait>"
+      ],
+      "shutdown_command": "sudo /sbin/poweroff"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "chef-solo",
+      "cookbook_paths": [
+        "./cookbooks",
+        "./site-cookbooks"
+      ],
+      "run_list" : [
+        "python",
+        "yum-epel",
+        "aws::default"
+      ]
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./aws-dev-env_with_centos6.5"
+    }
+  ]
+}
