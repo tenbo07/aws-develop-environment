@@ -20,15 +20,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	end
 
 	config.vm.box = "chef/centos-6.5"
-  config.vm.network :private_network, ip: '10.33.34.100'
-
-  config.omnibus.chef_version = :latest
-  setup_chef_solo(config) do |chef|
-    chef.add_recipe 'recipe[python]'
-    chef.add_recipe 'recipe[yum-epel]'
-    chef.add_recipe 'recipe[aws::default]'
-    chef.json = {
-    }
-  end
+	config.vm.network :private_network, ip: '10.33.34.100'
+	config.vm.hostname = 'aws-devlop-environment'
+	
+	config.omnibus.chef_version = :latest
+		setup_chef_solo(config) do |chef|
+		chef.add_recipe 'recipe[python]'
+		chef.add_recipe 'recipe[yum-epel]'
+		chef.add_recipe 'recipe[aws::default]'
+		chef.json = {
+		}
+	end
 
 end

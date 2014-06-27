@@ -19,9 +19,6 @@ end
 
 execute "bundle install" do
   action :nothing
-  user node[:default][:user]
-  group node[:default][:group]
-  cwd "/home/#{node[:default][:user]}"
-  environment "HOME" => "/home/#{node[:default][:user]}"
-  command "cd #{tmp_dir} && bundle install"
+
+  command "su - #{node[:default][:user]} -c 'cd #{tmp_dir} && bundle install'"
 end
