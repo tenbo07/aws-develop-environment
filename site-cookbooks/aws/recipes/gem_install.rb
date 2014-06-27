@@ -19,6 +19,5 @@ end
 
 execute "bundle install" do
   action :nothing
-
   command "su - #{node[:default][:user]} -c 'cd #{tmp_dir} && bundle install'"
 end
