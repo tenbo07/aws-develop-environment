@@ -6,3 +6,4 @@ tmp/
 .idea/
 *.lock
 packer_cache
+aws-dev-env_with_centos6.5.vbox

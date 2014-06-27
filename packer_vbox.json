@@ -22,6 +22,17 @@
 
   "provisioners": [
     {
+      "type": "shell",
+      "scripts": [
+        "./packer-scripts/base.sh",
+        "./packer-scripts/vagrant.sh",
+        "./packer-scripts/virtualbox.sh",
+        "./packer-scripts/cleanup.sh",
+        "./packer-scripts/zerodisk.sh"
+      ],
+      "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'"
+    },
+    {
       "type": "chef-solo",
       "cookbook_paths": [
         "./cookbooks",
@@ -38,7 +49,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "./aws-dev-env_with_centos6.5"
+      "output": "./aws-dev-env_with_centos6.5.vbox"
     }
   ]
 }

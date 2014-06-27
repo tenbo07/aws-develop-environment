@@ -1,3 +1,21 @@
+rvm_dependency_pkgs=[
+  "patch",
+  "libyaml-devel",
+  "libffi-devel",
+  "glibc-headers",
+  "autoconf",
+  "gcc-c++",
+  "glibc-devel",
+  "patch",
+  "readline-devel",
+  "zlib-devel",
+  "openssl-devel",
+  "automake",
+  "libtool",
+  "bison"
+]
+rvm_dependency_pkgs.each {|pkg| package pkg}
+
 execute 'install_rvm' do
   not_if "su - #{node[:default][:user]} -c 'which rvm'"
   command "su - #{node[:default][:user]} -c 'curl -L https://get.rvm.io | bash -s stable'"
