@@ -14,8 +14,6 @@
 
 ```vagrant plugin install vagrant-omnibus```
 
-```vagrant plugin install vagrant-proxyconf```
-
 #### 3.cookbook install
 
 ```librarian-chef install```
@@ -50,6 +48,9 @@ default[:git][:email] = "user@email"
 ```
 
 #### プロキシ環境下での利用
+
+```vagrant plugin install vagrant-proxyconf```
+
 環境変数"http_proxy","https_proxy"を設定
 
 for Windows
